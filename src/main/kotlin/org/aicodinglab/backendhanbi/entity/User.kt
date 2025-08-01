@@ -8,7 +8,7 @@ import jakarta.persistence.Table
 import java.time.LocalDateTime
 
 @Entity
-//@Table(name="UERS")
+@Table(name="USERS")
 class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var userId: Long,
     var email: String,

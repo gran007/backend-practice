@@ -1,19 +1,41 @@
 package org.aicodinglab.backendhanbi.controller
 
+import org.aicodinglab.backendhanbi.dto.UserDto
 import org.aicodinglab.backendhanbi.entity.User
+import org.aicodinglab.backendhanbi.repository.UserPageRepository
+import org.aicodinglab.backendhanbi.repository.UserRepository
+import org.aicodinglab.backendhanbi.service.SearchService
 import org.aicodinglab.backendhanbi.service.UserService
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
+import org.springframework.data.web.SortDefault
+import org.springframework.data.web.SortDefault.SortDefaults
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/users")
-class UserController(val userService: UserService) {
+class UserController(
+    val userService: UserService,
+    val searchService: SearchService
+) {
+
+    @GetMapping("/select")
+
+    fun searchPage(
+        @PageableDefault(page = 0, size = 10) @SortDefaults(
+        SortDefault(
+            sort = ["createTime"],
+            direction = Sort.Direction.DESC
+        )
+    ) pageable: Pageable,
+        @RequestParam(value = "search", defaultValue = "") search: String
+    ) : Page<UserDto> {
+        return searchService.getSearch(search, pageable, UserPageRepository::class.java, UserDto::class.java)
+    }
 
     @GetMapping("/all")
     fun findAll():  List<User> {

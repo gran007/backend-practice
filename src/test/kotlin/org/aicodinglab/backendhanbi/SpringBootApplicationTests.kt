@@ -2,15 +2,10 @@ package org.aicodinglab.backendhanbi
 
 import jakarta.transaction.Transactional
 import org.aicodinglab.backendhanbi.entity.User
-import org.aicodinglab.backendhanbi.repository.UserRepository
 import org.aicodinglab.backendhanbi.service.UserService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.TestPropertySource
 
 @SpringBootTest
 @Transactional

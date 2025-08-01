@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserRepository : JpaRepository<User, Long> {
+interface UserPageRepository : PagingAndSortingRepository<User, Long>, JpaSpecificationExecutor<User> {
 
     fun findByEmail(email: String): User?
 }
