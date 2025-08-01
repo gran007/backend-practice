@@ -17,16 +17,13 @@ class SearchService(val context: ApplicationContext) {
         rClass: Class<R>,
         tClass: Class<T>
     ): Page<T> {
-        val spBuilder =
-            SpecificationsBuilder<BeSpecification<E>, E>(Function { criteria: SearchCriteria? ->
+        val spBuilder = SpecificationBuilder<BeSpecification<E>, E>(
+            Function { criteria: SearchCriteria? ->
                 BeSpecification(
                     criteria!!
                 )
             })
         val specification: Specification<E>? = spBuilder.parseSearch(search)
-        if(specification == null) {
-            return Page.empty<T>()
-        }
         val repository: R = context.getBean(rClass)
         return repository.findAll(specification, pageable).map {
             return@map tClass.getConstructor(it!!.javaClass).newInstance(it)

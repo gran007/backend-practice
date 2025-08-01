@@ -22,7 +22,7 @@ class UserController(
     val userSpecificationService: UserSpecificationService,
 ) {
 
-    @GetMapping("/select")
+    @GetMapping("/query/paging")
     fun searchPage(
         @PageableDefault(page = 0, size = 10) @SortDefaults(
         SortDefault(

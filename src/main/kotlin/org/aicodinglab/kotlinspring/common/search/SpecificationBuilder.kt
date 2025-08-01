@@ -3,31 +3,30 @@ package org.aicodinglab.kotlinspring.common.search
 import org.springframework.data.jpa.domain.Specification
 import java.util.function.Function
 import java.util.regex.Pattern
-import java.util.stream.Collectors
 
-class SpecificationsBuilder<T : Specification<E>?, E>(private val func: Function<SearchCriteria?, T?>) {
+class SpecificationBuilder<T : Specification<E>?, E>(private val func: Function<SearchCriteria?, T?>) {
 
-    private val params: MutableList<SearchCriteria?> = ArrayList()
+    private val specs: MutableList<Specification<E>?> = ArrayList()
     private val pattern: Pattern = Pattern.compile("([\\w.]+?)(:|<|>)([가-힣a-zA-Z@.\\w]+?),")
 
     fun parseSearch(search: String?): Specification<E>? {
         val matcher = pattern.matcher("$search,")
 
         while (matcher.find()) {
-            params.add(SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3) as Object))
+            specs.add(
+                func.apply(
+                    SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3) as Object)
+                )
+            )
         }
 
-        if (params.isEmpty()) {
+        if (specs.isEmpty()) {
             return null
         }
 
-        val specs: MutableList<Specification<E>?> = params.stream()
-            .map<T?> { f: SearchCriteria? -> func.apply(f) }
-            .collect(Collectors.toList())
-
         var result = specs[0]
 
-        for (i in 1..<params.size) {
+        for (i in 1..<specs.size) {
             specs[0]!!.and(specs[i])
             result = result?.and(specs[i])
         }
