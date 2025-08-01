@@ -3,7 +3,7 @@ package org.aicodinglab.kotlinspring.controller
 import org.aicodinglab.kotlinspring.dto.UserDto
 import org.aicodinglab.kotlinspring.entity.User
 import org.aicodinglab.kotlinspring.repository.UserPageRepository
-import org.aicodinglab.kotlinspring.service.SearchService
+import org.aicodinglab.kotlinspring.common.search.SearchService
 import org.aicodinglab.kotlinspring.service.UserService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable

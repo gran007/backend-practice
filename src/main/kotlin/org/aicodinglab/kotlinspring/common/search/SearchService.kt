@@ -1,8 +1,5 @@
-package org.aicodinglab.kotlinspring.service
+package org.aicodinglab.kotlinspring.common.search
 
-import org.aicodinglab.kotlinspring.common.search.BeSpecification
-import org.aicodinglab.kotlinspring.common.search.SearchCriteria
-import org.aicodinglab.kotlinspring.common.search.SpecificationsBuilder
 import org.springframework.context.ApplicationContext
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -10,7 +7,6 @@ import org.springframework.data.jpa.domain.Specification
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 import org.springframework.stereotype.Component
 import java.util.function.Function
-
 
 @Component
 class SearchService(val context: ApplicationContext) {
@@ -22,7 +18,11 @@ class SearchService(val context: ApplicationContext) {
         tClass: Class<T>
     ): Page<T> {
         val spBuilder =
-            SpecificationsBuilder<BeSpecification<E>, E>(Function { criteria: SearchCriteria? -> BeSpecification(criteria!!) })
+            SpecificationsBuilder<BeSpecification<E>, E>(Function { criteria: SearchCriteria? ->
+                BeSpecification(
+                    criteria!!
+                )
+            })
         val specification: Specification<E>? = spBuilder.parseSearch(search)
         if(specification == null) {
             return Page.empty<T>()
