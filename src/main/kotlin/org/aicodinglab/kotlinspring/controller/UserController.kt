@@ -4,6 +4,7 @@ import org.aicodinglab.kotlinspring.dto.UserDto
 import org.aicodinglab.kotlinspring.entity.User
 import org.aicodinglab.kotlinspring.repository.UserPageRepository
 import org.aicodinglab.kotlinspring.common.search.SearchService
+import org.aicodinglab.kotlinspring.common.specification.UserSpecificationService
 import org.aicodinglab.kotlinspring.service.UserService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -17,11 +18,11 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/users")
 class UserController(
     val userService: UserService,
-    val searchService: SearchService
+    val searchService: SearchService,
+    val userSpecificationService: UserSpecificationService,
 ) {
 
     @GetMapping("/select")
-
     fun searchPage(
         @PageableDefault(page = 0, size = 10) @SortDefaults(
         SortDefault(
@@ -32,6 +33,14 @@ class UserController(
         @RequestParam(value = "search", defaultValue = "") search: String
     ) : Page<UserDto> {
         return searchService.getSearch(search, pageable, UserPageRepository::class.java, UserDto::class.java)
+    }
+
+    @GetMapping("/spec/{name}/{userId}")
+    fun findSpec(
+        @PathVariable name: String?,
+        @PathVariable userId: Long?,
+    ):  List<User> {
+        return userSpecificationService.findUsers(name, userId)
     }
 
     @GetMapping("/all")
