@@ -1,8 +1,8 @@
-package org.aicodinglab.backendhanbi.service
+package org.aicodinglab.kotlinspring.service
 
 import jakarta.transaction.Transactional
-import org.aicodinglab.backendhanbi.entity.User
-import org.aicodinglab.backendhanbi.repository.UserRepository
+import org.aicodinglab.kotlinspring.entity.User
+import org.aicodinglab.kotlinspring.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

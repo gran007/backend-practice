@@ -1,4 +1,4 @@
-package org.aicodinglab.backendhanbi.common.search
+package org.aicodinglab.kotlinspring.common.search
 
 import org.springframework.data.jpa.domain.Specification
 import java.util.function.Function
@@ -11,7 +11,6 @@ class SpecificationsBuilder<T : Specification<E>?, E>(private val func: Function
     private val pattern: Pattern = Pattern.compile("([\\w.]+?)(:|<|>)([가-힣a-zA-Z@.\\w]+?),")
 
     fun parseSearch(search: String?): Specification<E>? {
-        // 정규식으로 search 필드 파싱한다.
         val matcher = pattern.matcher("$search,")
 
         while (matcher.find()) {
@@ -31,7 +30,6 @@ class SpecificationsBuilder<T : Specification<E>?, E>(private val func: Function
         for (i in 1..<params.size) {
             specs[0]!!.and(specs[i])
             result = result?.and(specs[i])
-//                Specification.where<Any?>(result).and(specs[i])
         }
         return result
     }

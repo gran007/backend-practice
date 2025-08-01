@@ -1,4 +1,4 @@
-package org.aicodinglab.backendhanbi.common.search
+package org.aicodinglab.kotlinspring.common.search
 
 data class SearchCriteria(
     val key:String,

@@ -1,11 +1,10 @@
-package org.aicodinglab.backendhanbi.service
+package org.aicodinglab.kotlinspring.service
 
-import org.aicodinglab.backendhanbi.common.search.BeSpecification
-import org.aicodinglab.backendhanbi.common.search.SearchCriteria
-import org.aicodinglab.backendhanbi.common.search.SpecificationsBuilder
+import org.aicodinglab.kotlinspring.common.search.BeSpecification
+import org.aicodinglab.kotlinspring.common.search.SearchCriteria
+import org.aicodinglab.kotlinspring.common.search.SpecificationsBuilder
 import org.springframework.context.ApplicationContext
 import org.springframework.data.domain.Page
-import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
@@ -25,6 +24,9 @@ class SearchService(val context: ApplicationContext) {
         val spBuilder =
             SpecificationsBuilder<BeSpecification<E>, E>(Function { criteria: SearchCriteria? -> BeSpecification(criteria!!) })
         val specification: Specification<E>? = spBuilder.parseSearch(search)
+        if(specification == null) {
+            return Page.empty<T>()
+        }
         val repository: R = context.getBean(rClass)
         return repository.findAll(specification, pageable).map {
             return@map tClass.getConstructor(it!!.javaClass).newInstance(it)

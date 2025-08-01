@@ -1,4 +1,4 @@
-package org.aicodinglab.backendhanbi.entity
+package org.aicodinglab.kotlinspring.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

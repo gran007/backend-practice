@@ -1,8 +1,8 @@
-package org.aicodinglab.backendhanbi
+package org.aicodinglab.kotlinspring
 
 import jakarta.transaction.Transactional
-import org.aicodinglab.backendhanbi.entity.User
-import org.aicodinglab.backendhanbi.service.UserService
+import org.aicodinglab.kotlinspring.entity.User
+import org.aicodinglab.kotlinspring.service.UserService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

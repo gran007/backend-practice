@@ -1,6 +1,6 @@
-package org.aicodinglab.backendhanbi.dto
+package org.aicodinglab.kotlinspring.dto
 
-import org.aicodinglab.backendhanbi.entity.User
+import org.aicodinglab.kotlinspring.entity.User
 import java.time.LocalDateTime
 
 data class UserDto(

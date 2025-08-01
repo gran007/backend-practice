@@ -1,19 +1,16 @@
-package org.aicodinglab.backendhanbi.controller
+package org.aicodinglab.kotlinspring.controller
 
-import org.aicodinglab.backendhanbi.dto.UserDto
-import org.aicodinglab.backendhanbi.entity.User
-import org.aicodinglab.backendhanbi.repository.UserPageRepository
-import org.aicodinglab.backendhanbi.repository.UserRepository
-import org.aicodinglab.backendhanbi.service.SearchService
-import org.aicodinglab.backendhanbi.service.UserService
+import org.aicodinglab.kotlinspring.dto.UserDto
+import org.aicodinglab.kotlinspring.entity.User
+import org.aicodinglab.kotlinspring.repository.UserPageRepository
+import org.aicodinglab.kotlinspring.service.SearchService
+import org.aicodinglab.kotlinspring.service.UserService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
 import org.springframework.data.web.SortDefault
 import org.springframework.data.web.SortDefault.SortDefaults
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController

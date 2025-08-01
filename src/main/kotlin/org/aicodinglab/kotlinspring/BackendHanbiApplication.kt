@@ -1,4 +1,4 @@
-package org.aicodinglab.backendhanbi
+package org.aicodinglab.kotlinspring
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -1,4 +1,4 @@
-package org.aicodinglab.backendhanbi.common.search
+package org.aicodinglab.kotlinspring.common.search
 
 import jakarta.persistence.criteria.*
 import org.springframework.data.jpa.domain.Specification
