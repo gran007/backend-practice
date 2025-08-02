@@ -1,1 +1,1 @@
-rootProject.name = "backend-hanbi"
+rootProject.name = "kotlin-spring-study"

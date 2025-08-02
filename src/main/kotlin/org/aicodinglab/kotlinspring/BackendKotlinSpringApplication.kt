@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BackendHanbiApplication
+class BackendKotlinSpringApplication
 
 fun main(args: Array<String>) {
-    runApplication<BackendHanbiApplication>(*args)
+    runApplication<BackendKotlinSpringApplication>(*args)
 }
