@@ -32,6 +32,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("com.h2database:h2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 kotlin {

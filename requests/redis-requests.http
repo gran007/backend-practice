@@ -1,0 +1,17 @@
+###
+GET {{domain}}/redis/cache
+Content-Type: application/json
+
+###
+POST {{domain}}/redis/data
+Content-Type: application/json
+
+{
+  "name": "Jane",
+  "age": 20
+}
+
+
+###
+GET {{domain}}/redis/data
+Content-Type: application/json

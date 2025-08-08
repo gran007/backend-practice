@@ -3,6 +3,5 @@ POST {{domain}}/kafka/messages
 Content-Type: application/json
 
 {
-  "message": "kafka is awsome",
-  "count": 10
+  "message": "kafka is awsome"
 }

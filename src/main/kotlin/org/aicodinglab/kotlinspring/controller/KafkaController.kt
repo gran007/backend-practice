@@ -1,9 +1,5 @@
 package org.aicodinglab.kotlinspring.controller
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -25,13 +21,11 @@ class KafkaController(
     fun sendMessage(@RequestBody dto: KafkaDto): ResponseEntity<String> {
 
         runBlocking {
-
-            val jobs = List(dto.count) { index ->
+            val jobs = List(10) { index ->
                 launch {
                     kafkaTemplate.send("test-topic",
                         KafkaMessage(
                             dto.message,
-                            "coroutine",
                             index.toLong(),
                             System.currentTimeMillis()))
                 }

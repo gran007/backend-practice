@@ -35,3 +35,9 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       acks: -1
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
