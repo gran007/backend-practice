@@ -1,0 +1,42 @@
+###
+GET {{domain}}/users/all
+Content-Type: application/json
+
+###
+GET {{domain}}/users/email/{{email}}
+Content-Type: application/json
+
+###
+POST {{domain}}/users/save
+Content-Type: application/json
+
+{
+  "email": "3@3.com",
+  "userName": "3",
+  "password": "3"
+}
+
+###
+GET {{domain}}/users/query/paging?search=&size=1000&page=0&sort=createAt,desc
+
+<> 2025-08-08T211907.200.json
+<> 2025-08-02T105154.200.json
+<> 2025-08-02T105144.200.json
+<> 2025-08-02T105114.200.json
+<> 2025-08-02T105057.200.json
+
+###
+GET {{domain}}/users/query/paging?search=userName:John,email:john1133@gmail.com&size=1000&page=0&sort=createAt,desc
+
+<> 2025-08-02T111220.200.json
+<> 2025-08-02T105219.200.json
+
+###
+GET {{domain}}/users/query/paging?search=&size=1000&page=0&sort=createAt,desc
+
+
+###
+GET {{domain}}/users/spec/4/1
+
+###
+GET {{domain}}/users/all

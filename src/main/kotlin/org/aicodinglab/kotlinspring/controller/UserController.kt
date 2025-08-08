@@ -5,6 +5,7 @@ import org.aicodinglab.kotlinspring.entity.User
 import org.aicodinglab.kotlinspring.repository.UserPageRepository
 import org.aicodinglab.kotlinspring.common.search.SearchService
 import org.aicodinglab.kotlinspring.common.specification.UserSpecificationService
+import org.aicodinglab.kotlinspring.repository.UserSpecificationRepository
 import org.aicodinglab.kotlinspring.service.UserService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -32,6 +33,7 @@ class UserController(
     ) pageable: Pageable,
         @RequestParam(value = "search", defaultValue = "") search: String
     ) : Page<UserDto> {
+
         return searchService.getSearch(search, pageable, UserPageRepository::class.java, UserDto::class.java)
     }
 
